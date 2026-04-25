@@ -16,3 +16,4 @@ class Corso:
 
     def __str__(self):
         return f"{self.nome} ({self.codins}) - {self.crediti} CFU"
+
