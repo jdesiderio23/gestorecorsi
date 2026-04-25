@@ -30,29 +30,13 @@ class View(ft.UserControl):
         self._page.controls.append(self._title)
 
         #ROW1
-        self.ddPD = ft.Dropdown(label="Periodo Didattico",
-                                options = [ft.dropdown.Option("I"), ft.dropdown.Option("II")],
-                                width=200)
-        self.btnPrintCorsiPD = ft.ElevatedButton(text="Stampa Corsi",
-                                                 on_click=self._controller.handlePrintCorsiPD,
-                                                 width=300)
-        self.btnPrintIscrittiCorsiPD = ft.ElevatedButton(text="Stampa numero iscritto",
-                                                 on_click=self._controller.handlePrintIscrittiCorsiPD,
-                                                 width=300)
+        self.ddPD = ft.Dropdown(label = "Periodo Didattico",
+                                options = [ft.dropdown.Option("I"), ft.dropdown.Option("II")])
+        self.btnPrintCorsiPD = ft.ElevatedButton(text="Stampa Corsi", on_click=self._controller.handlePrintCorsiPD)
+        self.btnPrintIscrittiCorsiPD = ft.ElevatedButton(text="Stampa Numero Iscritti", on_click=self._controller.handlePrintIscrittiCorsiPD)
 
-        row1 = ft.Row([self.ddPD, self.btnPrintCorsiPD, self.btnPrintIscrittiCorsiPD], alignment=ft.MainAxisAlignment.CENTER)
+        row1 = ft.Row([self.ddPD, self.btnPrintCorsiPD, self.btnPrintIscrittiCorsiPD])
 
-        self.ddCodins = ft.Dropdown(label = "Corso", width=200)
-        self._controller.fillddCodins()
-        self.btnPrintIscrittiCodins = ft.ElevatedButton(text = "Stampa iscritti al corso",
-                                                        on_click = self._controller.handlePrintIscrittiCodins,
-                                                 width=300)
-        self.btnPrintCDSCodins = ft.ElevatedButton(text = "Stampa CDS afferenti",
-                                                   on_click = self._controller.handlePrintCDSCodins,
-                                                 width=300)
-
-        row2 = ft.Row([self.ddCodins, self.btnPrintIscrittiCodins, self.btnPrintCDSCodins], alignment=ft.MainAxisAlignment.CENTER)
-        self._page.add(row1, row2)
 
         # List View where the reply is printed
         self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
