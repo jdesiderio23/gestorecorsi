@@ -130,7 +130,7 @@ class DAO():
            select s.CDS, count(*) as n
            from studente s ,iscrizione i 
            where s.matricola = i.matricola 
-           and i.codins = '02CIXPG' 
+           and i.codins = %s
            and s.CDS != ""
            group by s.CDS 
            """
@@ -139,7 +139,7 @@ class DAO():
 
         res = []
         for row in cursor:
-            res.append(Studente(**row))
+            res.append((row["CDS"], row["n"]))
 
         cursor.close()
         cnx.close()
